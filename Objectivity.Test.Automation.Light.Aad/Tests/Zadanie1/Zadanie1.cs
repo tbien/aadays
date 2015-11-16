@@ -19,10 +19,13 @@ namespace Objectivity.Test.Automation.Light.Aad.Tests.Zadanie1
         /// The confirm java script alert test.
         /// </summary>
         [Test]
-        public void ConfirmJavaScriptAlertTest()
+        public void AmountValidationTest()
         {
             var task1 = new Task1(this.Driver);
             task1.NavigateToPage(GetHost() + "task_1");
+            task1.AddAmount("product1", 100);
+
+            Assert.True();
 
           //  var javaScriptAlertsPage = examplePage.GoToJavaScriptAlerts();
            //// javaScriptAlertsPage.OpenJsAlert();

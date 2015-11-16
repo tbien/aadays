@@ -45,7 +45,13 @@ namespace Objectivity.Test.Automation.Light.Common.Extensions
             }
         }
 
-        public static IWebElement FindDisplayedElement(this IWebDriver webDriver, By by, double time)
+        public static IWebElement FindDisplayedElement(this IWebDriver webDriver, By by)
+        {
+            return FindDisplayedElement(webDriver, by, 10);
+        }
+
+
+    public static IWebElement FindDisplayedElement(this IWebDriver webDriver, By by, double time)
         {
             try
             {

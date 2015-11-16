@@ -48,7 +48,9 @@ namespace Objectivity.Test.Automation.Light.Aad.Tests.Zadanie1
             task1.NavigateToPage(GetHost() + "task_1");
             task1.AddAmount("product1", "1");
 
-            Assert.True(task1.IsAlertVisible(), "Alert Message is not visible");
+            var elementName = task1.GetProductName();
+
+            Assert.True(task1.GetBasketText().Contains(elementName), "improper product in basket " + elementName + " " + task1.GetBasketText());
         }
 
     }

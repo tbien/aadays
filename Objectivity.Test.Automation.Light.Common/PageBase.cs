@@ -100,5 +100,10 @@ namespace Objectivity.Test.Automation.Light.Common
         {
             Driver.FindDisplayedElement(by).SendKeys(text);
         }
+
+        protected string GetElementText(By by)
+        {
+           return  Driver.FindDisplayedElement(by).Text;
+        }
     }
 }

@@ -15,7 +15,8 @@ namespace Objectivity.Test.Automation.Light.Aad.Pages
 
         private string productOneLocator = "//div[@class='row'][1]/div[1]//input";
         private string productOneButton = "//div[@class='row'][1]/div[1]//button";
-        private 
+        private string productName = "//div[@class='row'][1]/div[1]//h4";
+        private string basketRow = "div.row-in-basket .text-on-button-level";
 
         public Task1(IWebDriver driver) : base(driver)
         {
@@ -35,6 +36,16 @@ namespace Objectivity.Test.Automation.Light.Aad.Pages
         public string GetValidationText()
         {
             return GetAlertText();
+        }
+
+        public string GetBasketText()
+        {
+            return GetElementText(By.CssSelector(basketRow));
+        }
+
+        public string GetProductName()
+        {
+            return GetElementText(By.XPath(productName));
         }
     }
 }

@@ -20,5 +20,29 @@ namespace Objectivity.Test.Automation.Light.Common.Extensions
             }
             return null;
         }
+
+
+        public static bool IsElementPresent(this IWebDriver webDriver, By by, double timeoutInSeconds)
+        {
+            try
+            {
+                return new WebDriverWait(webDriver, TimeSpan.FromSeconds(timeoutInSeconds))
+                    .Until<bool>(d =>
+                    {
+                        try
+                        {
+                            return d.FindElement(by).Displayed;
+                        }
+                        catch (Exception e)
+                        {
+                            return false;
+                        }
+                    });
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }

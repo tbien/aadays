@@ -76,12 +76,15 @@ namespace Objectivity.Test.Automation.Light.Aad.Tests.Zadanie1
         {
             var task1 = new Task1(this.Driver);
             task1.NavigateToPage(GetHost() + "task_1");
-            task1.AddAmount("product1", "1");
+            task1.AddAmount("product1", "100");
 
             var elementName = task1.GetProductName();
             var productPrice = task1.GetProductPrice();
+            var psummaryQuantity = task1.GetQuantity();
+            double abc = double.Parse(productPrice)*100;
 
-            Assert.AreEqual(productPrice, task1.GetSummaryPrice().Split(' ')[0], "summary price in basket is improper, should be {0}", productPrice);
+            Assert.AreEqual(abc.ToString("F"), task1.GetSummaryPrice().Split(' ')[0], "summary price in basket is improper, should be {0}", productPrice);
+            Assert.AreEqual("100", psummaryQuantity);
         }
 
         [Test]
@@ -107,8 +110,37 @@ namespace Objectivity.Test.Automation.Light.Aad.Tests.Zadanie1
             var elementName = task1.GetProductName();
             task1.RemoveProduct();
 
-
             Assert.False(task1.GetBasketText().Contains(elementName), "product was not removed");
+        }
+
+        [Test]
+        public void CheckIfAddButtonIsDisabled()
+        {
+            var task1 = new Task1(this.Driver);
+            task1.NavigateToPage(GetHost() + "task_1");
+            task1.AddAmount("product1", "1");
+
+            var elementName = task1.GetProductName();
+            task1.RemoveProduct();
+
+            Assert.False(task1.IsButtonEnabled(), "add buton is not disabled");
+        }
+
+        [Test]
+        public void RemoveProduct2()
+        {
+            var task1 = new Task1(this.Driver);
+            task1.NavigateToPage(GetHost() + "task_1");
+            task1.AddAmount("product1", "1");
+
+            var elementName = task1.GetProductName();
+            task1.RemoveProduct();
+            task1.AddAmount("product1", "1");
+
+            Assert.True(task1.GetBasketText().Contains(elementName), "product was not removed");
+            var productPrice = task1.GetProductPrice();
+
+            Assert.AreEqual(productPrice, task1.GetSummaryPrice().Split(' ')[0], "summary price in basket is improper, should be {0}", productPrice);
         }
 
     }

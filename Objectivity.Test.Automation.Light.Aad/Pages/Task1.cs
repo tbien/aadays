@@ -22,6 +22,9 @@ namespace Objectivity.Test.Automation.Light.Aad.Pages
         private string summaryPrice = "span.summary-price";
         private string removeButton = "button[data-remove-from-basket]";
         private string summaryQuantity = "span.summary-quantity";
+        private string basket = "div[data-basket-body]";
+        private string img = "//div[@class='row'][1]/div[1]//img/..";
+        private string placeToDrop = "div.place-to-drop";
 
         public Task1(IWebDriver driver) : base(driver)
         {
@@ -52,6 +55,12 @@ namespace Objectivity.Test.Automation.Light.Aad.Pages
         {
             SendKeys(By.XPath(productOneLocator), amount);
             Click(By.XPath(productOneButton));
+        }
+
+        public void AddAmountByDd(string amount)
+        {
+            SendKeys(By.XPath(productOneLocator), amount);
+            DragAndDrop(By.XPath(img), By.CssSelector(placeToDrop));
         }
 
         public bool IsButtonEnabled()

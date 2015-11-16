@@ -7,6 +7,7 @@
 using System;
 using System.Runtime.Remoting.Messaging;
 using Objectivity.Test.Automation.Light.Common.Extensions;
+using OpenQA.Selenium.Interactions;
 
 namespace Objectivity.Test.Automation.Light.Common
 {
@@ -100,6 +101,19 @@ namespace Objectivity.Test.Automation.Light.Common
         protected void Click(By by)
         {
             Driver.FindDisplayedElement(by).Click();
+        }
+
+        protected void DragAndDrop(By by1, By by2)
+        {
+            var abc = Driver.FindElement(by2);
+            var x = abc.Location.X;
+            var y = abc.Location.Y;
+
+            IJavaScriptExecutor  js = (IJavaScriptExecutor)Driver;
+            js.ExecuteScript("arguments[0].style.visibility = 'visible', arguments[0].style.height = '1px'; arguments[0].style.width = '1px'; arguments[0].style.opacity = 1", abc);
+
+            new Actions(Driver).DragAndDropToOffset(Driver.FindDisplayedElement(by1), x, y).Build().Perform();
+            new Actions(Driver).DragAndDrop(Driver.FindDisplayedElement(by1), Driver.FindElement(by2)).Build().Perform();
         }
 
         public bool IsElementEnabled(By by)

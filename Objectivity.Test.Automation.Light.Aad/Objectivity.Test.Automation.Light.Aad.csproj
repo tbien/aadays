@@ -75,6 +75,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\ExampleTests.cs" />
     <Compile Include="Tests\JavaScriptAlertsTests\JavaScriptAlertsTests.cs" />
+    <Compile Include="Tests\Zadanie1\Zadanie1.cs" />
+    <Compile Include="Tests\Zadanie2\JavaScriptAlertsTests.cs" />
+    <Compile Include="Tests\Zadanie3\JavaScriptAlertsTests.cs" />
+    <Compile Include="Tests\Zadanie4\JavaScriptAlertsTests.cs" />
+    <Compile Include="Tests\Zadanie5\JavaScriptAlertsTests.cs" />
+    <Compile Include="Tests\Zadanie6\JavaScriptAlertsTests.cs" />
+    <Compile Include="Tests\Zadanie7\JavaScriptAlertsTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

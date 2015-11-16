@@ -4,13 +4,12 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Objectivity.Test.Automation.Light.Aad.Tests.JavaScriptAlertsTests
+using NUnit.Framework;
+using Objectivity.Test.Automation.Light.Aad.Pages;
+using Objectivity.Test.Automation.Light.Common;
+
+namespace Objectivity.Test.Automation.Light.Aad.Tests.Zadanie1
 {
-    using NUnit.Framework;
-
-    using Objectivity.Test.Automation.Light.Aad.Pages;
-    using Objectivity.Test.Automation.Light.Common;
-
     /// <summary>
     /// The java script alerts tests.
     /// </summary>

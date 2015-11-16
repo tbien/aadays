@@ -91,6 +91,11 @@ namespace Objectivity.Test.Automation.Light.Common
             }
         }
 
+        protected void ConfirmAlert()
+        {
+           Driver.SwitchTo().Alert().Dismiss();
+        }
+
         protected void Click(By by)
         {
             Driver.FindDisplayedElement(by).Click();
@@ -103,7 +108,19 @@ namespace Objectivity.Test.Automation.Light.Common
 
         protected string GetElementText(By by)
         {
-           return  Driver.FindDisplayedElement(by).Text;
+            try
+            {
+                return Driver.FindDisplayedElement(by, 1).Text;
+            }
+            catch
+            {
+                return string.Empty;
+            }
+        }
+
+        protected void RefreshPage()
+        {
+            Driver.Navigate().Refresh();
         }
     }
 }

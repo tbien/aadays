@@ -21,9 +21,15 @@ namespace Objectivity.Test.Automation.Light.Aad.Pages
         private string basketRow = "div.row-in-basket .text-on-button-level";
         private string summaryPrice = "span.summary-price";
         private string removeButton = "button[data-remove-from-basket]";
+        private string summaryQuantity = "span.summary-quantity";
 
         public Task1(IWebDriver driver) : base(driver)
         {
+        }
+
+        public string GetQuantity()
+        {
+            return GetElementText(By.CssSelector(summaryQuantity));
         }
 
         public void RemoveProduct()
@@ -46,6 +52,11 @@ namespace Objectivity.Test.Automation.Light.Aad.Pages
         {
             SendKeys(By.XPath(productOneLocator), amount);
             Click(By.XPath(productOneButton));
+        }
+
+        public bool IsButtonEnabled()
+        {
+            return IsElementEnabled(By.XPath(productOneButton));
         }
 
         public bool IsAlertVisible()

@@ -4,6 +4,7 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
 using System.Runtime.Remoting.Messaging;
 using Objectivity.Test.Automation.Light.Common.Extensions;
 
@@ -99,6 +100,19 @@ namespace Objectivity.Test.Automation.Light.Common
         protected void Click(By by)
         {
             Driver.FindDisplayedElement(by).Click();
+        }
+
+        public bool IsElementEnabled(By by)
+        {
+            try
+            {
+                return Driver.FindDisplayedElement(by, 1).Enabled;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            
         }
 
         protected void SendKeys(By by, string text)

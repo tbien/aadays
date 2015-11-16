@@ -50,7 +50,8 @@ namespace Objectivity.Test.Automation.Light.Common
         /// </summary>
         public static void QuitDriver()
         {
-            driverThread.Value.Quit();
+            driverThread.Value.Close();
+            driverThread.Value.Dispose();
         }
     }
 }

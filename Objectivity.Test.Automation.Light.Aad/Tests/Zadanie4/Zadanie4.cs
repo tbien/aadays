@@ -10,6 +10,8 @@ namespace Objectivity.Test.Automation.Light.Aad.Tests.JavaScriptAlertsTests
 
     using Objectivity.Test.Automation.Light.Aad.Pages;
     using Objectivity.Test.Automation.Light.Common;
+    using Objectivity.Test.Automation.Light.Common.Extensions;
+    using OpenQA.Selenium;
 
     /// <summary>
     /// The java script alerts tests.
@@ -28,6 +30,14 @@ namespace Objectivity.Test.Automation.Light.Aad.Tests.JavaScriptAlertsTests
             this.Driver.SwitchTo().Alert().Accept();
             this.Driver.SwitchTo().DefaultContent();
             Assert.True(javaScriptAlertsPage.Contains("You successfuly clicked an alert"));
+        }
+
+        [Test]
+        public void ProperSave() {
+            var task4 = new Task4(this.Driver);
+            task4.NavigateToPage(GetHost() + "task_4");
+            Driver.WaitForElement(By.CssSelector("button.btn.btn-primary.btn-block.js-open-window"), 2).Click();
+
         }
     }
 }

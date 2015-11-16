@@ -66,6 +66,7 @@ namespace Objectivity.Test.Automation.Light.Aad.Tests.JavaScriptAlertsTests
             Actions action = new Actions(Driver);
             action.ContextClick(j11anchor).Perform();
             Driver.WaitForElement(By.CssSelector(".vakata-context.jstree-contextmenu.jstree-default-contextmenu"), 2).Click();
+            Driver.WaitForElement(By.CssSelector("j1_1_anchor"), 2).SendKeys("Abc");
         }
     }
 }

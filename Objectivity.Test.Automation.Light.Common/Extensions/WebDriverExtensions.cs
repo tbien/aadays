@@ -44,5 +44,33 @@ namespace Objectivity.Test.Automation.Light.Common.Extensions
                 return false;
             }
         }
+
+        public static IWebElement FindDisplayedElement(this IWebDriver webDriver, By by, double time)
+        {
+            try
+            {
+                {
+                    return new WebDriverWait(webDriver, TimeSpan.FromSeconds(time))
+                        .Until<IWebElement>(d =>
+                        {
+                            try
+                            {
+                                return d.FindElement(@by).Displayed ? d.FindElement(@by) : null;
+                            }
+                            catch (Exception e)
+                            {
+                                return null;
+                            }
+                        });
+                }
+                Console.WriteLine("Element is not displayed on the page");
+                return null;
+            }
+            catch (WebDriverTimeoutException)
+            {
+                Console.WriteLine("Element was not found. Timeou after: {0}", time);
+                return null;
+            }
+        }
     }
 }

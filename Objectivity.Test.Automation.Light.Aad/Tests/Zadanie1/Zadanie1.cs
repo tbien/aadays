@@ -4,6 +4,7 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Threading;
 using NUnit.Framework;
 using Objectivity.Test.Automation.Light.Aad.Pages;
 using Objectivity.Test.Automation.Light.Common;
@@ -23,9 +24,10 @@ namespace Objectivity.Test.Automation.Light.Aad.Tests.Zadanie1
         {
             var task1 = new Task1(this.Driver);
             task1.NavigateToPage(GetHost() + "task_1");
-            task1.AddAmount("product1", 100);
-
-            Assert.True();
+            task1.AddAmount("product1", "101");
+            
+            Thread.Sleep(2000);
+            //Assert.True();
 
           //  var javaScriptAlertsPage = examplePage.GoToJavaScriptAlerts();
            //// javaScriptAlertsPage.OpenJsAlert();

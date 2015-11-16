@@ -4,6 +4,9 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Runtime.Remoting.Messaging;
+using Objectivity.Test.Automation.Light.Common.Extensions;
+
 namespace Objectivity.Test.Automation.Light.Common
 {
     using OpenQA.Selenium;
@@ -62,6 +65,28 @@ namespace Objectivity.Test.Automation.Light.Common
         public void NavigateToPage(string page)
         {
             Driver.Navigate().GoToUrl(page);
+        }
+
+        public bool IsAlertPresent()
+        {
+            try
+            {
+                return Driver.SwitchTo().Alert().Text.Length > 0 ? true : false;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public void Click(By by)
+        {
+            Driver.FindDisplayedElement(by).Click();
+        }
+
+        public void SendKeys(By by, string text)
+        {
+            Driver.FindDisplayedElement(by).SendKeys(text);
         }
     }
 }

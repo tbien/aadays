@@ -8,11 +8,10 @@ namespace Objectivity.Test.Automation.Light.Common.Extensions
     {
         public static IWebElement WaitForElement(this IWebDriver webDriver, By locator, double timeoutInSeconds)
         {
-            IWebElement element;
             try
             {
                 var wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(timeoutInSeconds));
-                element = wait.Until(ExpectedConditions.ElementIsVisible(locator));
+                wait.Until(ExpectedConditions.ElementIsVisible(locator));
             }
             catch (Exception e)
             {
@@ -33,7 +32,7 @@ namespace Objectivity.Test.Automation.Light.Common.Extensions
                         {
                             return d.FindElement(by).Displayed;
                         }
-                        catch (Exception e)
+                        catch (Exception)
                         {
                             return false;
                         }
@@ -57,14 +56,12 @@ namespace Objectivity.Test.Automation.Light.Common.Extensions
                             {
                                 return d.FindElement(@by).Displayed ? d.FindElement(@by) : null;
                             }
-                            catch (Exception e)
+                            catch (Exception)
                             {
                                 return null;
                             }
                         });
                 }
-                Console.WriteLine("Element is not displayed on the page");
-                return null;
             }
             catch (WebDriverTimeoutException)
             {

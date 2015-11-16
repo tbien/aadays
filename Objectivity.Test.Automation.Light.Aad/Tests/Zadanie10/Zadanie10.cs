@@ -4,30 +4,50 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Objectivity.Test.Automation.Light.Aad.Tests.JavaScriptAlertsTests
+using NUnit.Framework;
+using Objectivity.Test.Automation.Light.Aad.Pages;
+using Objectivity.Test.Automation.Light.Common;
+using OpenQA.Selenium;
+
+namespace Objectivity.Test.Automation.Light.Aad.Tests.Zadanie10
 {
-    using NUnit.Framework;
-
-    using Objectivity.Test.Automation.Light.Aad.Pages;
-    using Objectivity.Test.Automation.Light.Common;
-
     /// <summary>
     /// The java script alerts tests.
     /// </summary>
+    [Category("Zadanie10")]
     public class Zadanie10 : TestBase
     {
+        [SetUp]
+        public void OpenTaskPage()
+        {
+            Driver.Navigate().GoToUrl(GetHost() + "task_10");
+        }
         /// <summary>
         /// The confirm java script alert test.
         /// </summary>
         [Test]
-        public void ConfirmJavaScriptAlertTest()
+        public void HeaderExistsTest()
         {
-            var examplePage = new ExamplePage(this.Driver);
-            var javaScriptAlertsPage = examplePage.GoToJavaScriptAlerts();
-            javaScriptAlertsPage.OpenJsAlert();
-            this.Driver.SwitchTo().Alert().Accept();
-            this.Driver.SwitchTo().DefaultContent();
-            Assert.True(javaScriptAlertsPage.Contains("You successfuly clicked an alert"));
+            var taskPage = new Task2(this.Driver);
+            Assert.True(taskPage.Contains("<h3>Lorem ipsum</h3>"));
+        }
+
+        [Test]
+        public void KoniecNotVisibleTest()
+        {
+            var taskPage = new Task10(this.Driver);
+            Assert.False(taskPage.Contains("<h3>Koniec</h3>"));
+        }
+
+        [Test]
+        public void ScrollToKoniecTest()
+        {
+            var taskPage = new Task10(this.Driver);
+            for (int i = 0; i < 6; i++)
+            {
+                taskPage.GetTextContainer().SendKeys(Keys.PageDown);
+            }
+            Assert.True(taskPage.Contains("Koniec"));
         }
     }
 }

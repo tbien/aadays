@@ -14,20 +14,31 @@ namespace Objectivity.Test.Automation.Light.Aad.Tests.JavaScriptAlertsTests
     /// <summary>
     /// The java script alerts tests.
     /// </summary>
+    [Category("Zadanie8")]
     public class Zadanie8 : TestBase
     {
+        [SetUp]
+        public void OpenTaskPage()
+        {
+            Driver.Navigate().GoToUrl(GetHost() + "task_8");
+        }
         /// <summary>
         /// The confirm java script alert test.
         /// </summary>
         [Test]
-        public void ConfirmJavaScriptAlertTest()
+        public void SubmitEmptyForm()
         {
-            var examplePage = new ExamplePage(this.Driver);
-            var javaScriptAlertsPage = examplePage.GoToJavaScriptAlerts();
-            javaScriptAlertsPage.OpenJsAlert();
-            this.Driver.SwitchTo().Alert().Accept();
-            this.Driver.SwitchTo().DefaultContent();
-            Assert.True(javaScriptAlertsPage.Contains("You successfuly clicked an alert"));
+            var taskPage = new Task8(this.Driver);
+            taskPage.Submit();
+            Assert.True(taskPage.Contains("Zapłać"));
+        }
+        [Test]
+        public void SubmitFilledForm()
+        {
+            var taskPage = new Task8(this.Driver);
+            taskPage.FillForm("American Express", "Kowalski", "378282246310005", "123", "January", "2016");
+            taskPage.Submit();
+            Assert.True(taskPage.Contains("Zamówienie opłacone"));
         }
     }
 }

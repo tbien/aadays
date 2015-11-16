@@ -52,6 +52,11 @@ namespace Objectivity.Test.Automation.Light.Common
             this.Driver.Navigate().GoToUrl(baseUrl);
         }
 
+        protected static string GetHost()
+        {
+            return ConfigurationBase.Protocol + "://" + ConfigurationBase.Host + ConfigurationBase.Url;
+        }
+
         /// <summary>
         /// After the test.
         /// </summary>

@@ -21,12 +21,14 @@ namespace Objectivity.Test.Automation.Light.Aad.Tests.Zadanie1
         [Test]
         public void ConfirmJavaScriptAlertTest()
         {
-            var examplePage = new ExamplePage(this.Driver);
-            var javaScriptAlertsPage = examplePage.GoToJavaScriptAlerts();
-            javaScriptAlertsPage.OpenJsAlert();
-            this.Driver.SwitchTo().Alert().Accept();
-            this.Driver.SwitchTo().DefaultContent();
-            Assert.True(javaScriptAlertsPage.Contains("You successfuly clicked an alert"));
+            var task1 = new Task1(this.Driver);
+            task1.NavigateToPage(GetHost() + "task_1");
+
+          //  var javaScriptAlertsPage = examplePage.GoToJavaScriptAlerts();
+           //// javaScriptAlertsPage.OpenJsAlert();
+          //  this.Driver.SwitchTo().Alert().Accept();
+           // this.Driver.SwitchTo().DefaultContent();
+            //Assert.True(javaScriptAlertsPage.Contains("You successfuly clicked an alert"));
         }
     }
 }

@@ -57,5 +57,11 @@ namespace Objectivity.Test.Automation.Light.Common
             var contains = pageSours.Contains(text);
             return contains;
         }
+
+
+        public void NavigateToPage(string page)
+        {
+            Driver.Navigate().GoToUrl(page);
+        }
     }
 }

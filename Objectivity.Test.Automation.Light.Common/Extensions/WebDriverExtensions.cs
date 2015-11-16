@@ -11,7 +11,8 @@ namespace Objectivity.Test.Automation.Light.Common.Extensions
             try
             {
                 var wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(timeoutInSeconds));
-                wait.Until(ExpectedConditions.ElementIsVisible(locator));
+                var element = wait.Until(ExpectedConditions.ElementIsVisible(locator));
+                return element;
             }
             catch (Exception e)
             {

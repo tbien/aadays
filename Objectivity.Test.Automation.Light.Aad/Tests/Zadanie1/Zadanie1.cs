@@ -25,15 +25,31 @@ namespace Objectivity.Test.Automation.Light.Aad.Tests.Zadanie1
             var task1 = new Task1(this.Driver);
             task1.NavigateToPage(GetHost() + "task_1");
             task1.AddAmount("product1", "101");
-            
-            Thread.Sleep(2000);
-            //Assert.True();
-
-          //  var javaScriptAlertsPage = examplePage.GoToJavaScriptAlerts();
-           //// javaScriptAlertsPage.OpenJsAlert();
-          //  this.Driver.SwitchTo().Alert().Accept();
-           // this.Driver.SwitchTo().DefaultContent();
-            //Assert.True(javaScriptAlertsPage.Contains("You successfuly clicked an alert"));
+           
+            Assert.True(task1.IsAlertVisible(), "Alert Message is not visible");
         }
+
+        [Test]
+        public void AlertTextValidationTest()
+        {
+            const string expectedMessage = "Łączna ilość produktów w koszyku nie może przekroczyć 100.";
+            var task1 = new Task1(this.Driver);
+            task1.NavigateToPage(GetHost() + "task_1");
+            task1.AddAmount("product1", "101");
+
+            Assert.True(task1.IsAlertVisible(), "Alert Message is not visible");
+            Assert.True(task1.GetValidationText().Equals(expectedMessage), "Improper alert message, expected {0}, actual {1}", expectedMessage, task1.GetValidationText());
+        }
+
+        [Test]
+        public void AddProductToBasket()
+        {
+            var task1 = new Task1(this.Driver);
+            task1.NavigateToPage(GetHost() + "task_1");
+            task1.AddAmount("product1", "1");
+
+            Assert.True(task1.IsAlertVisible(), "Alert Message is not visible");
+        }
+
     }
 }

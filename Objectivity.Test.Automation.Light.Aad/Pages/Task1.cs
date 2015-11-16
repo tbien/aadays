@@ -15,6 +15,7 @@ namespace Objectivity.Test.Automation.Light.Aad.Pages
 
         private string productOneLocator = "//div[@class='row'][1]/div[1]//input";
         private string productOneButton = "//div[@class='row'][1]/div[1]//button";
+        private 
 
         public Task1(IWebDriver driver) : base(driver)
         {
@@ -26,16 +27,14 @@ namespace Objectivity.Test.Automation.Light.Aad.Pages
             Click(By.XPath(productOneButton));
         }
 
-        public bool IsAlertPresent()
+        public bool IsAlertVisible()
         {
-            try
-            {
-                return Driver.SwitchTo().Alert().Text.Any();
-            }
-            catch
-            {
-                return false;
-            }
+            return IsAlertPresent();
+        }
+
+        public string GetValidationText()
+        {
+            return GetAlertText();
         }
     }
 }

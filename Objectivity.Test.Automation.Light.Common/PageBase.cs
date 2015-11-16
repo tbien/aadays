@@ -67,7 +67,7 @@ namespace Objectivity.Test.Automation.Light.Common
             Driver.Navigate().GoToUrl(page);
         }
 
-        public bool IsAlertPresent()
+        protected bool IsAlertPresent()
         {
             try
             {
@@ -79,12 +79,24 @@ namespace Objectivity.Test.Automation.Light.Common
             }
         }
 
-        public void Click(By by)
+        protected string GetAlertText()
+        {
+            try
+            {
+                return Driver.SwitchTo().Alert().Text;
+            }
+            catch
+            {
+                return "";
+            }
+        }
+
+        protected void Click(By by)
         {
             Driver.FindDisplayedElement(by).Click();
         }
 
-        public void SendKeys(By by, string text)
+        protected void SendKeys(By by, string text)
         {
             Driver.FindDisplayedElement(by).SendKeys(text);
         }

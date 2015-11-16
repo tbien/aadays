@@ -76,12 +76,15 @@
     <Compile Include="Tests\ExampleTests.cs" />
     <Compile Include="Tests\JavaScriptAlertsTests\JavaScriptAlertsTests.cs" />
     <Compile Include="Tests\Zadanie1\Zadanie1.cs" />
-    <Compile Include="Tests\Zadanie2\JavaScriptAlertsTests.cs" />
-    <Compile Include="Tests\Zadanie3\JavaScriptAlertsTests.cs" />
-    <Compile Include="Tests\Zadanie4\JavaScriptAlertsTests.cs" />
-    <Compile Include="Tests\Zadanie5\JavaScriptAlertsTests.cs" />
-    <Compile Include="Tests\Zadanie6\JavaScriptAlertsTests.cs" />
-    <Compile Include="Tests\Zadanie7\JavaScriptAlertsTests.cs" />
+    <Compile Include="Tests\Zadanie2\Zadanie2.cs" />
+    <Compile Include="Tests\Zadanie3\Zadanie3.cs" />
+    <Compile Include="Tests\Zadanie4\Zadanie4.cs" />
+    <Compile Include="Tests\Zadanie5\Zadanie5.cs" />
+    <Compile Include="Tests\Zadanie6\Zadanie6.cs" />
+    <Compile Include="Tests\Zadanie10\Zadanie10.cs" />
+    <Compile Include="Tests\Zadanie9\Zadanie9.cs" />
+    <Compile Include="Tests\Zadanie8\Zadanie8.cs" />
+    <Compile Include="Tests\Zadanie7\Zadanie7.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
